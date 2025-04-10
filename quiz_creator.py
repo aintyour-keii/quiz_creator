@@ -56,8 +56,16 @@ def create_quiz():
         # Ask for 3 other options
         other_options = [input("Enter incorrect answer: ").strip() for i in range(3)]
 
+        # Store the question, correct answer, other options in list -> questions storage
+        questions.append({
+            "question": question,
+            "answer": answer,
+            "other_options": other_options
+        })
+
+        print(questions)
         break
-    # -> Store the question, correct answer, other options in list
+
     # -> Ask for another question input - y/n; y - continue loop; n - save quiz
     # (Outside of loop) Creating a *.txt file in the "quizzes" folder - file name is snake_case title
     # Create *.txt file:
