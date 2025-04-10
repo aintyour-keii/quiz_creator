@@ -63,10 +63,10 @@ def create_quiz():
             "other_options": other_options
         })
 
-        print(questions)
-        break
-
-    # -> Ask for another question input - y/n; y - continue loop; n - save quiz
+        # Ask for another question input - y/n; y - continue loop; n - save quiz
+        another_question = input("Would you like to enter another question? (y/n): ").strip().lower()
+        if another_question != "y":
+            break
     # (Outside of loop) Creating a *.txt file in the "quizzes" folder - file name is snake_case title
     # Create *.txt file:
     # Write Title in file
