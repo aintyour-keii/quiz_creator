@@ -68,6 +68,8 @@ def create_quiz():
         if another_question != "y":
             break
     # (Outside of loop) Creating a *.txt file in the "quizzes" folder - file name is snake_case title
+    file_path = os.path.join(quizzes_folder, f"{snake_case_title}.txt")
+    file = open(file_path, "w", encoding="utf-8")
     # Create *.txt file:
     # Write Title in file
     # For each question:
@@ -79,4 +81,5 @@ def create_quiz():
     # -> Add empty space so that questions are not squished together.
     # Print "Quiz Successfully Created: {file_name}"
     # Return to main menu
+
 main_menu()
