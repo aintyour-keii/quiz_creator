@@ -1,9 +1,20 @@
+import os
+
 # Checking if the "quizzes" folder exists:
 # If not, create "quizzes" folder
+quizzes_folder = "quizzes"
+os.makedirs(quizzes_folder, exist_ok=True)
 
 # Create Main Menu:
 # Option 1. Create Quiz
 # Option 2. Exit
+
+def main_menu():
+    print("\nQuiz Creator")
+    print("1. Create a Quiz")
+    print("2. Exit")
+
+main_menu()
 
 # Wait for user input
 # If input is 1, proceed to create quiz
