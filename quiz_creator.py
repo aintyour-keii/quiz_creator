@@ -1,4 +1,5 @@
 import os
+import random
 
 # Checking if the "quizzes" folder exists:
 # If not, create "quizzes" folder
@@ -70,16 +71,37 @@ def create_quiz():
     # (Outside of loop) Creating a *.txt file in the "quizzes" folder - file name is snake_case title
     file_path = os.path.join(quizzes_folder, f"{snake_case_title}.txt")
     file = open(file_path, "w", encoding="utf-8")
+
     # Create *.txt file:
     # Write Title in file
+    file.write(f"{quiz_title.title()}")
+
     # For each question:
-    # -> Write question number and text(question itself) in file
-    # -> Shuffle all choices (correct + other options):
-    # -> Write choices as A-D:
-    #   -> Correct answer ends with "*"
-    #   -> Choices are on a new line
-    # -> Add empty space so that questions are not squished together.
+    for index, question_data in enumerate(questions, start=1):
+        # Write question number and text(question itself) in file
+        file.write(f"{index}. {question_data['question']}\n")
+
+        # Create choices list by combining answer with other options
+        choices = [question_data['answer']] + [question_data['other_options']]
+
+        # Shuffle all choices (correct + other options)
+        letters = ["A", "B", "C", "D"]
+        randomized = list(zip(letters, choices))
+        random.shuffle(randomized)
+
+        # Write choices as A-D:
+        for letter, choice in randomized:
+            # Correct answer ends with "*"
+            # Choices are on a new line
+            if choice == question_data['answer']:
+                file.write(f"{letter}. {choice}*\n")
+            else:
+                file.write(f"{letter}. {choice}\n")
+        # Add empty space so that questions are not squished together.
+        file.write("\n")
     # Print "Quiz Successfully Created: {file_name}"
+    print(f"Quiz Successfully Created: {snake_case_title}.txt")
     # Return to main menu
+    main_menu()
 
 main_menu()
