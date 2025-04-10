@@ -21,6 +21,7 @@ def main_menu():
     user_input = input("Enter an option: ").strip()
     if user_input == "1":
         print("Proceeding to create a quiz.")
+        create_quiz()
     elif user_input == "2":
         print("Thank you for using the Quiz Creator Program. Goodbye!")
         quit()
@@ -28,12 +29,19 @@ def main_menu():
         print("Invalid input. Please choose 1 or 2.")
         main_menu()
 
-main_menu()
-
 # Create "Create Quiz" function
-# Ask for the quiz title: 
-# -> if input is "exit", return to main menu
-# -> otherwise title to snake_case store to variable
+def create_quiz():
+    # Ask for the quiz title:
+    quiz_title = input("Enter quiz title: ").strip()
+    # if input is "exit", return to main menu
+    if quiz_title.lower() == "exit":
+        return main_menu()
+    # otherwise convert title to snake_case store to variable
+    else:
+        snake_case_title = quiz_title.replace(" ", "_").lower()
+        print(snake_case_title)
+
+main_menu()
 # Loop:
 # -> Ask for question input:
 # -> Question input format:
