@@ -41,24 +41,32 @@ def create_quiz():
         snake_case_title = quiz_title.replace(" ", "_").lower()
         print(snake_case_title)
 
+    # Create a quesions list - storage for the questions
+    questions = []
+    # Loop:
+    while True:
+        # Ask for question input:
+        question = input("Enter question: ").strip()
+        # Question input format: add " ?" at the end if there's none
+        if not question.endswith("?"):
+            question += " ?"
+
+        print(question)
+        break
+    # -> Ask for correct answer input
+    # -> Ask for 3 other options
+    # -> Store the question, correct answer, other options in list
+    # -> Ask for another question input - y/n; y - continue loop; n - save quiz
+    # (Outside of loop) Creating a *.txt file in the "quizzes" folder - file name is snake_case title
+    # Create *.txt file:
+    # Write Title in file
+    # For each question:
+    # -> Write question number and text(question itself) in file
+    # -> Shuffle all choices (correct + other options):
+    # -> Write choices as A-D:
+    #   -> Correct answer ends with "*"
+    #   -> Choices are on a new line
+    # -> Add empty space so that questions are not squished together.
+    # Print "Quiz Successfully Created: {file_name}"
+    # Return to main menu
 main_menu()
-# Loop:
-# -> Ask for question input:
-# -> Question input format:
-#   -> add " ?" at the end if there's none
-# -> Ask for correct answer input
-# -> Ask for 3 other options
-# -> Store the question, correct answer, other options in list
-# -> Ask for another question input - y/n; y - continue loop; n - save quiz
-# (Outside of loop) Creating a *.txt file in the "quizzes" folder - file name is snake_case title
-# Create *.txt file:
-# Write Title in file
-# For each question:
-# -> Write question number and text(question itself) in file
-# -> Shuffle all choices (correct + other options):
-# -> Write choices as A-D:
-#   -> Correct answer ends with "*"
-#   -> Choices are on a new line
-# -> Add empty space so that questions are not squished together.
-# Print "Quiz Successfully Created: {file_name}"
-# Return to main menu
