@@ -209,10 +209,22 @@ def run_quiz(file_path):
         else:
             print(f"\n{i}. {question_data['question']}")
 
-    # -> Shuffle the choices
-    # -> Assign letters (A, B, C, D) to each choice
-    # -> Track the correct answer letter
-    # -> Ask for user input (A/B/C/D)
+        # Shuffle the choices
+        choices = question_data['choices']
+        random.shuffle(choices)
+
+        letter_map = {}
+        correct_letter = ""
+        # Assign letters (A, B, C, D) to each choice
+        for i, choice in enumerate(choices):
+            letter = chr(65 + i)
+            letter_map[letter] = choice
+            # Track the correct answer letter
+            if choice['is_correct']:
+                correct_letter = letter
+            print(f"{letter}. {choice['text']}")
+
+    # Ask for user input (A/B/C/D)
     # --> Check if the answer is correct and update score
     # --> Store the result with user answer and correct answer
     # After all questions are answered
