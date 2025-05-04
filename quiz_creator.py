@@ -224,7 +224,8 @@ def run_quiz(file_path):
                 correct_letter = letter
             print(f"{letter}. {choice['text']}")
 
-    # Ask for user input (A/B/C/D)
+        # Ask for user input (A/B/C/D)
+        user_answer = input("Your answer (A/B/C/D): ").strip().upper()
     # --> Check if the answer is correct and update score
     # --> Store the result with user answer and correct answer
     # After all questions are answered
