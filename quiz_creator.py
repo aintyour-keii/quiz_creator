@@ -230,7 +230,16 @@ def run_quiz(file_path):
         is_answer_correct = user_answer == correct_letter
         if is_answer_correct:
             score += 1
-    # --> Store the result with user answer and correct answer
+        # Store the result with user answer and correct answer
+        user_results.append({
+            "question_num": i,
+            "user_letter": user_answer,
+            "correct_letter": correct_letter,
+            "user_choice": letter_map.get(user_answer, {"text": "Invalid"}).get("text", "Invalid"),
+            "correct_choice": letter_map[correct_letter]["text"],
+            "is_correct": is_answer_correct
+        })
+
     # After all questions are answered
     # -> Display quiz results
     # --> For each question, show if correct or incorrect
