@@ -17,7 +17,7 @@ os.makedirs(quizzes_folder, exist_ok=True)
 # If input is 3, exit the program
 # If something else, print "Invalid input", return to main menu
 def main_menu():
-    print("\nQuiz Creator")
+    print("\nQuiz Program")
     print("1. Create a Quiz")
     print("2. Take Quiz")
     print("3. Exit")
@@ -240,11 +240,20 @@ def run_quiz(file_path):
             "is_correct": is_answer_correct
         })
 
+    print("\n=== QUIZ RESULTS ===")
     # After all questions are answered
-    # -> Display quiz results
-    # --> For each question, show if correct or incorrect
-    # --> If incorrect, show the correct answer
+    # Display quiz results
+    for result in user_results:
+        # For each question, show if correct or incorrect
+        if result["is_correct"]:
+            print(f"{result['question_num']}. {result['user_letter']}. {result['user_choice']}")
+        else:
+            # If incorrect, show the correct answer
+            print(f"{result['question_num']}. {result['user_letter']}. {result['user_choice']} -> {result['correct_letter']}. {result['correct_choice']}")
+
     # Display the total score
+    print(f"\nSCORE: {score}/{len(questions)}\n")
     # Return to the main menu
+    main_menu()
 
 main_menu()
