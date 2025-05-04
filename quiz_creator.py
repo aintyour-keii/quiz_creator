@@ -132,6 +132,8 @@ def take_quiz():
     # Quiz Selection:
     print("Select A Quiz:")
     # Enumarate the quizzes with corresponding numbers as id (1. Quiz Title)
+    for id, quiz in enumerate(quizzes, start=1):
+        print(f"{id}. {str(quiz).replace(".txt","").replace("_"," ").title()}")
     # Ask for user input to select a quiz
     # Check if user input is within the range of valid ids for the quizzes
     # If input is valid, proceed with running the quiz
