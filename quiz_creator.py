@@ -141,7 +141,7 @@ def take_quiz():
         # If input is valid, proceed with running the quiz
         if 1 <= choice <= len(quizzes):
             quiz_path = os.path.join(quizzes_folder, quizzes[choice - 1])
-            print(f"Taking {quizzes[choice - 1]}")
+            run_quiz(quiz_path)
         else: # If input is invalid, call the "Take Quiz" function again.
             print("Invalid number.")
             take_quiz()
@@ -150,40 +150,44 @@ def take_quiz():
         take_quiz()
 
 # Create "Run Quiz" function with a parameter for the quiz file path
-"""
-Responsible for actual taking of the quiz.
-Handles scores, quiz progess, and shows correct answers.
-Randomizes the questions and its corresponding choices.
-"""
-# Open the quiz file using the provided path
-# Read all lines from the file and strip whitespaces
+def run_quiz(file_path):
+    """
+    Responsible for actual taking of the quiz.
+    Handles scores, quiz progess, and shows correct answers.
+    Randomizes the questions and its corresponding choices.
+    """
+    # Open the quiz file using the provided path
+    with open(file_path, "r", encoding="utf-8") as file:
+        # Read all lines from the file and strip whitespaces
+        lines = [line.strip() for line in file.readlines()]
 
-# Display the quiz title (first line of the file)
+    # Display the quiz title (first line of the file)
+    print(f"\nStarting Quiz: {lines[0]}\n")
 
-# Initialize an empty list to store questions
-# Start reading from the second line onward
-# -> If a line starts with a number and dot (e.g., 1.), it's a question
-# -> Read the next 4 lines as choices
-# --> Determine which choice has a "*" indicating it's correct
-# --> Strip "*" and store each choice with a flag indicating correctness
-# Add the question and its choices to the list
-# Continue until all questions are read
-# Shuffle the questions randomly
-# Initialize score to 0
-# Initialize list to store user results
-# Loop through each question
-# -> Display the question
-# -> Shuffle the choices
-# -> Assign letters (A, B, C, D) to each choice
-# -> Track the correct answer letter
-# -> Ask for user input (A/B/C/D)
-# --> Check if the answer is correct and update score
-# --> Store the result with user answer and correct answer
-# After all questions are answered
-# -> Display quiz results
-# --> For each question, show if correct or incorrect
-# --> If incorrect, show the correct answer
-# Display the total score
-# Return to the main menu
+    # Initialize an empty list to store questions
+    # Start reading from the second line onward
+    # -> If a line starts with a number and dot (e.g., 1.), it's a question
+    # -> Read the next 4 lines as choices
+    # --> Determine which choice has a "*" indicating it's correct
+    # --> Strip "*" and store each choice with a flag indicating correctness
+    # Add the question and its choices to the list
+    # Continue until all questions are read
+    # Shuffle the questions randomly
+    # Initialize score to 0
+    # Initialize list to store user results
+    # Loop through each question
+    # -> Display the question
+    # -> Shuffle the choices
+    # -> Assign letters (A, B, C, D) to each choice
+    # -> Track the correct answer letter
+    # -> Ask for user input (A/B/C/D)
+    # --> Check if the answer is correct and update score
+    # --> Store the result with user answer and correct answer
+    # After all questions are answered
+    # -> Display quiz results
+    # --> For each question, show if correct or incorrect
+    # --> If incorrect, show the correct answer
+    # Display the total score
+    # Return to the main menu
 
 main_menu()
