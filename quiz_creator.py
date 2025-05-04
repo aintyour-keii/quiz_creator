@@ -116,11 +116,19 @@ def take_quiz():
     """
     Responsible for quiz selection
     """
-    print("Select A Quiz:")
     # Store the created quiz files in a list
+    quizzes = []
+    for file in os.listdir(quizzes_folder):
+        if file.endswith("*.txt"):
+            quizzes.append(file)
+    
+    if not quizzes:
+        print("No quizzes found. Please create one first.")
+        return main_menu()
     # Check if there are created quizzes
     # -> If there are proceed with selecting a quiz to take
     # -> If there are none, return to main menu
+    print("Select A Quiz:")
     # Quiz Selection:
     # Enumarate the quizzes with corresponding numbers as id (1. Quiz Title)
     # Ask for user input to select a quiz
