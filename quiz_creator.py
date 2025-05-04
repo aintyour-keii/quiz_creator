@@ -226,7 +226,10 @@ def run_quiz(file_path):
 
         # Ask for user input (A/B/C/D)
         user_answer = input("Your answer (A/B/C/D): ").strip().upper()
-    # --> Check if the answer is correct and update score
+        # Check if the answer is correct and update score
+        is_answer_correct = user_answer == correct_letter
+        if is_answer_correct:
+            score += 1
     # --> Store the result with user answer and correct answer
     # After all questions are answered
     # -> Display quiz results
