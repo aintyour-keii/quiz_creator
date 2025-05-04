@@ -135,13 +135,19 @@ def take_quiz():
     for id, quiz in enumerate(quizzes, start=1):
         print(f"{id}. {str(quiz).replace(".txt","").replace("_"," ").title()}")
     # Ask for user input to select a quiz
-    choice = int(input("Select a quiz number to take: "))
-    # Check if user input is within the range of valid ids for the quizzes
-    if 1 <= choice <= len(quizzes):
-        quiz_path = os.path.join(quizzes_folder, quizzes[choice - 1])
-        print(f"Taking {quizzes[choice - 1]}")
-    # If input is valid, proceed with running the quiz
-    # If input is invalid, call the "Take Quiz" function again.
+    try:
+        choice = int(input("Select a quiz number to take: "))
+        # Check if user input is within the range of valid ids for the quizzes
+        # If input is valid, proceed with running the quiz
+        if 1 <= choice <= len(quizzes):
+            quiz_path = os.path.join(quizzes_folder, quizzes[choice - 1])
+            print(f"Taking {quizzes[choice - 1]}")
+        else: # If input is invalid, call the "Take Quiz" function again.
+            print("Invalid number.")
+            take_quiz()
+    except ValueError:
+        print("Please enter a valid number.")
+        take_quiz()
 
 # Create "Run Quiz" function with a parameter for the quiz file path
 """
