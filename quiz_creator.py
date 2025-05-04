@@ -28,6 +28,7 @@ def main_menu():
         create_quiz()
     elif user_input == "2":
         print("Select a quiz to take.")
+        take_quiz()
     elif user_input == "3":
         print("Thank you for using the Quiz Creator Program. Goodbye!")
         quit()
@@ -111,19 +112,21 @@ def create_quiz():
     main_menu()
 
 # Create "Take Quiz" function
-"""
-Responsible for quiz selection
-"""
-# Store the created quiz files in a list
-# Check if there are created quizzes
-# -> If there are proceed with selecting a quiz to take
-# -> If there are none, return to main menu
-# Quiz Selection:
-# Enumarate the quizzes with corresponding numbers as id (1. Quiz Title)
-# Ask for user input to select a quiz
-# Check if user input is within the range of valid ids for the quizzes
-# If input is valid, proceed with running the quiz
-# If input is invalid, call the "Take Quiz" function again.
+def take_quiz():
+    """
+    Responsible for quiz selection
+    """
+    print("Select A Quiz:")
+    # Store the created quiz files in a list
+    # Check if there are created quizzes
+    # -> If there are proceed with selecting a quiz to take
+    # -> If there are none, return to main menu
+    # Quiz Selection:
+    # Enumarate the quizzes with corresponding numbers as id (1. Quiz Title)
+    # Ask for user input to select a quiz
+    # Check if user input is within the range of valid ids for the quizzes
+    # If input is valid, proceed with running the quiz
+    # If input is invalid, call the "Take Quiz" function again.
 
 # Create "Run Quiz" function with a parameter for the quiz file path
 """
