@@ -19,17 +19,20 @@ os.makedirs(quizzes_folder, exist_ok=True)
 def main_menu():
     print("\nQuiz Creator")
     print("1. Create a Quiz")
-    print("2. Exit")
+    print("2. Take Quiz")
+    print("3. Exit")
 
     user_input = input("Enter an option: ").strip()
     if user_input == "1":
         print("Proceeding to create a quiz.")
         create_quiz()
     elif user_input == "2":
+        print("Select a quiz to take.")
+    elif user_input == "3":
         print("Thank you for using the Quiz Creator Program. Goodbye!")
         quit()
     else:
-        print("Invalid input. Please choose 1 or 2.")
+        print("Invalid input. Please choose 1 or 2 or 3.")
         main_menu()
 
 # Create "Create Quiz" function
