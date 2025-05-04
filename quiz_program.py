@@ -30,7 +30,7 @@ def main_menu():
         print("Select a quiz to take.")
         take_quiz()
     elif user_input == "3":
-        print("Thank you for using the Quiz Creator Program. Goodbye!")
+        print("Thank you for using the Quiz Program. Goodbye!")
         quit()
     else:
         print("Invalid input. Please choose 1 or 2 or 3.")
@@ -216,29 +216,29 @@ def run_quiz(file_path):
         letter_map = {}
         correct_letter = ""
         # Assign letters (A, B, C, D) to each choice
-        for i, choice in enumerate(choices):
-            letter = chr(65 + i)
+        for j, choice in enumerate(choices):
+            letter = chr(65 + j)
             letter_map[letter] = choice
             # Track the correct answer letter
             if choice['is_correct']:
                 correct_letter = letter
             print(f"{letter}. {choice['text']}")
 
-            # Ask for user input (A/B/C/D)
-            user_answer = input("Your answer (A/B/C/D): ").strip().upper()
-            # Check if the answer is correct and update score
-            is_answer_correct = user_answer == correct_letter
-            if is_answer_correct:
-                score += 1
-            # Store the result with user answer and correct answer
-            user_results.append({
-                "question_num": i,
-                "user_letter": user_answer,
-                "correct_letter": correct_letter,
-                "user_choice": letter_map.get(user_answer, {"text": "Invalid"}).get("text", "Invalid"),
-                "correct_choice": letter_map[correct_letter]["text"],
-                "is_correct": is_answer_correct
-            })
+        # Ask for user input (A/B/C/D)
+        user_answer = input("Your answer (A/B/C/D): ").strip().upper()
+        # Check if the answer is correct and update score
+        is_answer_correct = user_answer == correct_letter
+        if is_answer_correct:
+            score += 1
+        # Store the result with user answer and correct answer
+        user_results.append({
+            "question_num": i,
+            "user_letter": user_answer,
+            "correct_letter": correct_letter,
+            "user_choice": letter_map.get(user_answer, {"text": "Invalid"}).get("text", "Invalid"),
+            "correct_choice": letter_map[correct_letter]["text"],
+            "is_correct": is_answer_correct
+        })
 
     print("\n=== QUIZ RESULTS ===")
     # After all questions are answered
