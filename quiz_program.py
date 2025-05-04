@@ -224,21 +224,21 @@ def run_quiz(file_path):
                 correct_letter = letter
             print(f"{letter}. {choice['text']}")
 
-        # Ask for user input (A/B/C/D)
-        user_answer = input("Your answer (A/B/C/D): ").strip().upper()
-        # Check if the answer is correct and update score
-        is_answer_correct = user_answer == correct_letter
-        if is_answer_correct:
-            score += 1
-        # Store the result with user answer and correct answer
-        user_results.append({
-            "question_num": i,
-            "user_letter": user_answer,
-            "correct_letter": correct_letter,
-            "user_choice": letter_map.get(user_answer, {"text": "Invalid"}).get("text", "Invalid"),
-            "correct_choice": letter_map[correct_letter]["text"],
-            "is_correct": is_answer_correct
-        })
+            # Ask for user input (A/B/C/D)
+            user_answer = input("Your answer (A/B/C/D): ").strip().upper()
+            # Check if the answer is correct and update score
+            is_answer_correct = user_answer == correct_letter
+            if is_answer_correct:
+                score += 1
+            # Store the result with user answer and correct answer
+            user_results.append({
+                "question_num": i,
+                "user_letter": user_answer,
+                "correct_letter": correct_letter,
+                "user_choice": letter_map.get(user_answer, {"text": "Invalid"}).get("text", "Invalid"),
+                "correct_choice": letter_map[correct_letter]["text"],
+                "is_correct": is_answer_correct
+            })
 
     print("\n=== QUIZ RESULTS ===")
     # After all questions are answered
