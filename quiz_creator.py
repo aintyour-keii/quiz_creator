@@ -195,10 +195,20 @@ def run_quiz(file_path):
             line_index += 1
     
     # Shuffle the questions randomly
+    random.shuffle(questions)
     # Initialize score to 0
+    score = 0
     # Initialize list to store user results
+    user_results = []
+    
     # Loop through each question
-    # -> Display the question
+    for i, question_data in enumerate(questions, start=1):
+        # Display the question
+        if i == 1:
+            print(f"{i}. {question_data['question']}")
+        else:
+            print(f"\n{i}. {question_data['question']}")
+
     # -> Shuffle the choices
     # -> Assign letters (A, B, C, D) to each choice
     # -> Track the correct answer letter
