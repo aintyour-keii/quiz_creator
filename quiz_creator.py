@@ -170,20 +170,30 @@ def run_quiz(file_path):
     # Start reading from the second line onward
     while line_index < len(lines):
         # If a line starts with a number and dot (e.g., 1.), it's a question
+        # Continue until all questions are read
         if lines[line_index] and lines[line_index][0].isdigit() and lines[line_index][1] == ".":
             question_text = lines[line_index]
             line_index += 1
+            choices = []
+            # Read the next 4 lines as choices
+            for _ in range(4):
+                letter, choice = lines[line_index].split(". ", 1)
+                # Determine which choice has a "*" indicating it's correct
+                is_correct = choice.endswith("*")
+                # Strip "*" and store each choice with a flag indicating correctness
+                if is_correct:
+                    choice = choice[:-1]
+                choices.append({"text": choice, "is_correct": is_correct})
+                line_index +=1
+
+            # Add the question and its choices to the list
             questions.append({
                 "question": question_text[question_text.find('.') + 1:].strip(),
+                "choices": choices
             })
-            print(questions)
         else:
             line_index += 1
-    # Read the next 4 lines as choices
-    # Determine which choice has a "*" indicating it's correct
-    # Strip "*" and store each choice with a flag indicating correctness
-    # Add the question and its choices to the list
-    # Continue until all questions are read
+    
     # Shuffle the questions randomly
     # Initialize score to 0
     # Initialize list to store user results
